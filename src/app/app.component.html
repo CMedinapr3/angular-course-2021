@@ -2,5 +2,7 @@
 </p>
 
 <app-test2> </app-test2>
-<app-test1 status="busy"> </app-test1>
+<app-test1 [status]="myStatus" 
+(onSendData)="printDataTest1Comp($event)">> </app-test1>
 
+<button onclick="">do click</button>

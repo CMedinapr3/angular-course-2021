@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular2021';
+  myStatus = 'my status';
 //{1:'a',2:'a',3:'a',4:'a',5:'a',6:'a'} convertir a un array y sumar los numeros pares
   constructor(){
     const a = {1:'a',2:'a',3:'a',4:'a',5:'a',6:'a'};
@@ -23,7 +24,12 @@ export class AppComponent {
    const tareaFilter = [1,2,3,4,5,6].filter(item => item%2 !== 0).join(',');
    console.log(tareaFilter);
 
+  
+  
+  
   }
-
+  printDataTest1Comp(event:any){
+    console.log('RICARDO COMP:', event);
+    }
   
 }
