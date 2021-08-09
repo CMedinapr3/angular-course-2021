@@ -31,5 +31,9 @@ export class AppComponent {
   printDataTest1Comp(event:any){
     console.log('RICARDO COMP:', event);
     }
+
+    printData(event){
+      console.log('Child Test 2:', event);
+    }
   
 }

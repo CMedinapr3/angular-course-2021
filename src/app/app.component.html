@@ -1,8 +1,10 @@
 <p>App component
 </p>
 
-<app-test2> </app-test2>
+
 <app-test1 [status]="myStatus" 
 (onSendData)="printDataTest1Comp($event)">> </app-test1>
 
 <button onclick="">do click</button>
+
+<app-test2 name="nombre1" lastname=" apellido1" (onSendData) ="printData($event)"> </app-test2>
