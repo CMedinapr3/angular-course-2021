@@ -10,6 +10,11 @@ export class Test2Component {
   @Input() lastname: string = 'nomrbe 1';
   @Output() onSendData = new EventEmitter(null);
 
+myvar1=4;
+myvar2=2;
+
+
+
   constructor() { }
 
 
@@ -17,6 +22,10 @@ export class Test2Component {
     console.log('EVENT CLICK', event);
 
     this.onSendData.emit('general data ricardo pari ' + this.name + this.lastname)
+  }
+
+  test0(event){
+    console.log('SUMA: ', this.myvar1+this.myvar2);
   }
 
 }
