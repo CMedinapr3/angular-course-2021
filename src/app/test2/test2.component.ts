@@ -13,6 +13,8 @@ export class Test2Component {
 myvar1=4;
 myvar2=2;
 
+name="nombre";
+lastname="Apellido";
 
 
   constructor() { }
@@ -26,6 +28,10 @@ myvar2=2;
 
   test0(event){
     console.log('SUMA: ', this.myvar1+this.myvar2);
+  }
+
+  test3(event){
+    console.log('Concatenado: ', this.name+this.lastname);
   }
 
 }
