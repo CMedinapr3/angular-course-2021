@@ -8,3 +8,10 @@
 <button onclick="">do click</button>
 
 <app-test2 name="nombre1" lastname=" apellido1" (onSendData) ="printData($event)"> </app-test2>
+
+<button (click)="sw = !sw">SHOW TEST3</button>
+<div *ngIf="sw">
+  <app-test3 
+  [name]="myStatus">
+  </app-test3>
+</div>
