@@ -10,6 +10,8 @@ export class AppComponent {
   myStatus = 'my status';
 
   sw = true;
+
+  color:string;
 //{1:'a',2:'a',3:'a',4:'a',5:'a',6:'a'} convertir a un array y sumar los numeros pares
   constructor(){
     const a = {1:'a',2:'a',3:'a',4:'a',5:'a',6:'a'};

@@ -10,8 +10,33 @@
 <app-test2 name="nombre1" lastname=" apellido1" (onSendData) ="printData($event)"> </app-test2>
 
 <button (click)="sw = !sw">SHOW TEST3</button>
-<div *ngIf="sw">
+<div [hidden]="sw">
   <app-test3 
   [name]="myStatus">
   </app-test3>
 </div>
+
+<ul>
+  <li *ngFor="let item of ['first', 'second', 'third']; let i = index">
+    <app-test1 
+[status]="color" 
+(onSendData)="printDataTest1Comp($event)"> 
+</app-test1>
+  </li>
+</ul>
+
+<input type="text" [(ngModel)]="color">
+<ul [ngSwitch]="color">
+  <li *ngSwitchCase="'red'">
+  <app-test1
+    [status]="color" 
+    (onSendData)="printDataRicardoComp($event)">
+  </app-test1>
+  </li>
+  <li *ngSwitchCase="'yellow'">
+  <app-test3 
+  [name]="clor">
+  </app-test3></li>
+  <li *ngSwitchCase="'green'">green</li>
+  <li *ngSwitchDefault>Default Orange</li>
+</ul>
