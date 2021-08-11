@@ -12,6 +12,14 @@ export class AppComponent {
   sw = true;
 
   color:string;
+
+  name="name";
+  lastname="apellido";
+  
+  lista:string[]=[this.name, this.lastname];
+
+ 
+
 //{1:'a',2:'a',3:'a',4:'a',5:'a',6:'a'} convertir a un array y sumar los numeros pares
   constructor(){
     const a = {1:'a',2:'a',3:'a',4:'a',5:'a',6:'a'};

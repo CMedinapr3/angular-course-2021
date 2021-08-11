@@ -40,3 +40,66 @@
   <li *ngSwitchCase="'green'">green</li>
   <li *ngSwitchDefault>Default Orange</li>
 </ul>
+
+
+<ul>
+  <li *ngFor="let item of ['first','second']; let indice=index">
+    
+    <input type="string" [(ngModel)]="name">
+    <input type="string" [(ngModel)]="lastname">
+  </li>
+</ul>
+
+
+<div #mydiv1> 
+<p>My div 1</p>
+</div>
+
+<ng-template #myVarElse>
+  <p>This is my template</p>
+  <p>This is my template</p>
+  <p>This is my template</p>
+  <p>This is my template</p>
+
+</ng-template>
+
+
+
+<app-test2 
+name="nombre1" 
+lastname=" apellido1" 
+(onSendData) ="printData($event)"> 
+
+<p>Mi contenido</p>
+<p>Mi contenido</p>
+<button>My button</button>
+</app-test2>
+
+<button (click) ="sw =!sw">SHOW TEST 3</button>
+<ng-container * ngIf="sw" style="margom: 30 px">
+  <p>NG container</p>
+</ng-container>
+
+<input type="text"[(ngModel)]= "color">
+<div [style.border] = "'5px solid ' + color"> 
+  my div with styles
+</div>
+
+<p [ngStyle]="{
+  'background': color,
+  'border': '5px gray solid'
+}"> my p with ng style</p>
+
+
+<p>------------------------</p>
+
+<div [class.est1] = "color === 'hola' ">
+  my div with class</div>
+
+  <div [ngClass] = "{
+    'est1': color === 'hola0',
+    'est2': color === 'hola1',
+    'est3': color === 'hola2'
+  }">
+my divb with ng class
+  </div>
