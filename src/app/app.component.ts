@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import {of} from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +19,7 @@ export class AppComponent {
   
   lista:string[]=[this.name, this.lastname];
 
- 
+  tictock = of([1,2,3,4,5]);
 
 //{1:'a',2:'a',3:'a',4:'a',5:'a',6:'a'} convertir a un array y sumar los numeros pares
   constructor(){
@@ -36,6 +38,23 @@ export class AppComponent {
    console.log(tareaFilter);
 
   
+    // PERSON A
+    this.tictock.pipe(
+      map(s => s.join('-')),
+      map(s => s + 'hola'),
+    ).subscribe(v => {
+      console.log('PERSON A VIDEO', v);
+    });
+    // PERSON B
+    this.tictock.pipe(
+      filter((v:any) => v[0]%2 === 1)
+    ).subscribe(v => {
+      console.log('PERSON B VIDEO', v);
+    });
+    // PERSON C
+    this.tictock.subscribe(v => {
+      console.log('PERSON C VIDEO', v);
+    });
   
   
   }
@@ -47,4 +66,7 @@ export class AppComponent {
       console.log('Child Test 2:', event);
     }
   
+    onAddVideo(){
+
+    }
 }
