@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import {of} from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import {BehaviorSubject, of, Subscription} from 'rxjs';
+import { filter, map, delay } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-root',
@@ -13,13 +14,15 @@ export class AppComponent {
   sw = true;
 
   color:string;
+  personASub:Subscription;
+  video = 1;
+  tictock = new BehaviorSubject(this.video);
 
   name="name";
   lastname="apellido";
   
   lista:string[]=[this.name, this.lastname];
 
-  tictock = of([1,2,3,4,5]);
 
 //{1:'a',2:'a',3:'a',4:'a',5:'a',6:'a'} convertir a un array y sumar los numeros pares
   constructor(){
@@ -38,16 +41,16 @@ export class AppComponent {
    console.log(tareaFilter);
 
   
-    // PERSON A
-    this.tictock.pipe(
-      map(s => s.join('-')),
-      map(s => s + 'hola'),
+     // PERSON A
+     this.personASub = this.tictock.pipe(
+      filter(s => s%2 === 0)
     ).subscribe(v => {
       console.log('PERSON A VIDEO', v);
     });
     // PERSON B
     this.tictock.pipe(
-      filter((v:any) => v[0]%2 === 1)
+      
+      delay(4000)
     ).subscribe(v => {
       console.log('PERSON B VIDEO', v);
     });
@@ -67,6 +70,12 @@ export class AppComponent {
     }
   
     onAddVideo(){
-
+      this.video ++
+      this.tictock.next(this.video);    
+    }
+  
+    person1Unsubscribe(){
+       this.personASub.unsubscribe();
+       console.log('PERSON A SE DESUSCRIBE')
     }
 }
