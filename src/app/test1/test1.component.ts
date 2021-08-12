@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class Test1Component {
   @Input('status') statusTest: string = 'working';
   @Output() onSendData = new EventEmitter(null);
-
+  @Input('estilo') style: number = 0;
   constructor() {}
 
 

@@ -19,11 +19,25 @@
 <ul>
   <li *ngFor="let item of ['first', 'second', 'third']; let i = index">
     <app-test1 
-[status]="color" 
-(onSendData)="printDataTest1Comp($event)"> 
-</app-test1>
+      [status]="color" 
+      (onSendData)="printDataTest1Comp($event)"> 
+      </app-test1>
   </li>
 </ul>
+
+<div style="border: 5px gray solid;">
+  <ul>
+      <li *ngFor="let item of [1,2,3,4]">
+          <div [ngClass]="{
+              'color1': item%2 === 1,
+              'color2': item%2 === 0
+          }">
+              <app-test1 [estilo]="item" (onSendData)="printData($event)">
+              </app-test1>
+          </div>
+      </li>
+  </ul>
+</div>
 
 <input type="text" [(ngModel)]="color">
 <ul [ngSwitch]="color">
