@@ -118,7 +118,17 @@ lastname=" apellido1"
 my divb with ng class
   </div>
 
-  <button (click)="onAddVideo()">add Video</button>
+ 
 
-  <button (click)="onAddVideo()">add Video</button>
-<button (click)="person1Unsubscribe()">Uns PersonA</button>
+
+
+<button directive1Test (click)="onAddVideo()">add Video</button>
+<button directive1Test (click)="person1Unsubscribe()">Uns PersonA</button>
+
+<p [directive1Test]="'red'"
+   (outputTest)="test($event)"
+  >Ni primera directiva de atributo </p>
+
+
+
+<app-test1></app-test1>
