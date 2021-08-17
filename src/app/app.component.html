@@ -143,3 +143,14 @@ my divb with ng class
 <div *ngIfTask="switch" (test)="test($event)">
     Structural directive
 </div>
+
+
+<div #myDiv1>contnet</div>
+<p>{{myDiv1}}</p>
+
+<app-test1 #myCompTest1></app-test1>
+
+<input type="text" #myDiv2 value="asdasd">
+<p>{{myDiv2}}</p>
+
+<button (click)="onShowLocalVars()">show local vars</button>
