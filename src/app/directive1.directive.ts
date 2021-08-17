@@ -4,7 +4,7 @@ import { Directive, ElementRef, EventEmitter, HostListener, Input, Output, OnCha
   selector: '[directive1Test]'
 })
 export class Directive1Directive {
-  
+
   @Input() color: string = 'yellow';
   @Input() directive1Test: string = 'yellow';
   @Output() outputTest = new EventEmitter<any>(null);
@@ -14,8 +14,7 @@ export class Directive1Directive {
   }
 
   @HostListener('mouseleave') onMouseleave() {
-    this.setBackgroundColor('green');
-    this.outputTest.emit('test myoutput');
+    this.element.nativeElement.style.backgroundColor = this.color;
   }
 
   @HostListener('mouseenter') onMouseenter() {
