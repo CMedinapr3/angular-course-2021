@@ -1,10 +1,11 @@
-import { Directive, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostListener, Input, Output, OnChanges} from '@angular/core';
 
 @Directive({
   selector: '[directive1Test]'
 })
 export class Directive1Directive {
-
+  
+  @Input() color: string = 'yellow';
   @Input() directive1Test: string = 'yellow';
   @Output() outputTest = new EventEmitter<any>(null);
 
@@ -18,8 +19,7 @@ export class Directive1Directive {
   }
 
   @HostListener('mouseenter') onMouseenter() {
-    this.setBackgroundColor('gray');
-    this.element.nativeElement.style.backgroundColor = 'gray';
+    this.element.nativeElement.style.backgroundColor = this.color;
   }
 
   constructor(private element: ElementRef) {
