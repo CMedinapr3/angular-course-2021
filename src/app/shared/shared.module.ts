@@ -11,6 +11,7 @@ import { ExponentPipe } from './exponent.pipe';
   declarations: [
     CardComponent,
     LoaderComponent,
+    ExponentPipe,
     ExponentPipe
   ],
   exports:[
