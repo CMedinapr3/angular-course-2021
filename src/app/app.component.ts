@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common';
 import { Component, Input, ElementRef, ViewChild } from '@angular/core';
 import {BehaviorSubject, of, Subscription} from 'rxjs';
 import { filter, map, delay } from 'rxjs/operators';
@@ -35,7 +36,14 @@ export class AppComponent {
 
   vacunar(persona, tipo) {
     const index = this.personas[tipo].findIndex(p => p === persona);
-    this.personas[tipo].splice(index, 1);
-    this.personas.vacunados.push({...persona, vacunado: true});
-  }
+    if(persona.doses < 3 && persona.vaccineType === "C"){
+      persona.doses++
+        if(persona.doses ===3){
+          this.personas[tipo].splice(index, 1);
+          this.personas.vacunados.push({...persona, vaccined: 1});
+        }
+    }
+     
+    }
+    
 }
