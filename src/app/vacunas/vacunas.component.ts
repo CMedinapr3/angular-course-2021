@@ -9,7 +9,7 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
 	  <p>Nombre: {{name | uppercase}}</p>
     <p>Color: {{color}}</p>
 	  <p>age: {{age}}</p>
-    <p>date: {{date }}</p>
+    <p>date: {{(date | strToDate)|date: 'dd/MM/yyyy'}}</p>
     <p>vaccineType: {{vaccineType}}</p>
 	  <p>vaccined: {{ vaccined ? ('yes' | lowercase) : ('no' | lowercase) }}</p>
     <p>doses: {{doses}}</p>

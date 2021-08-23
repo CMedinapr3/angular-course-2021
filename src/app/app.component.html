@@ -1,8 +1,8 @@
 <div>
 
- 
+<div *ngIf = "personas.vacunados.length === 5" style="background-color: green">EVERYBODY VACCINATED</div>
 
-  <p>VETERINARIA</p>
+  <p>VACUNACION ! </p>
   <p>VACUNADOS {{personas.vacunados.length}}</p>
   <p>SIN VACUNAR {{personas.novacunados.length}}</p>
 

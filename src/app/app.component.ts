@@ -22,7 +22,6 @@ export class AppComponent {
     {name: "ramiro", age: 24, date: "2019-09-07T15:50+00Z", disease: false, vaccineType: "B", vaccined:1, doses: 2},
     {name: "juana", age: 13, date: "2019-09-07T15:50+00Z", disease: false, vaccineType: "A", vaccined:0, doses: 0}
    ];
-
    
   personas = {
     vacunados: this.allVacunados.filter(p => p.vaccined === 1),

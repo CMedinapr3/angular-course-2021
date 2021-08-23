@@ -9,6 +9,7 @@ import { Directive2Directive } from './directive2.directive';
 import { AdminModule } from './pages/admin/admin.module';
 import { BuyModule } from './pages/buy/buy.module';
 import { HomeModule } from './pages/home/home.module';
+import { StrToDatePipe } from './str-to-date.pipe';
 import { Test1Component } from './test1/test1.component';
 import { Test2Component } from './test2/test2.component';
 import { Test3Component } from './test3/test3.component';
@@ -22,7 +23,8 @@ import { VacunasComponent } from './vacunas/vacunas.component';
     Test3Component,
     Directive1Directive,
     Directive2Directive,
-    VacunasComponent
+    VacunasComponent,
+    StrToDatePipe
   ],
   imports: [
     BrowserModule,
