@@ -1,23 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardComponent } from './card/card.component';
 import { LoaderComponent } from './loader/loader.component';
 import { ExponentPipe } from './exponent.pipe';
+import { Provider1Component } from '../provider/provider1/provider1.component';
+import { Shared3Pipe } from './shared3.pipe';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    CardComponent,
-    LoaderComponent,
-    ExponentPipe,
-    ExponentPipe
+   Shared3Pipe
+    
   ],
   exports:[
-    CardComponent,
-    LoaderComponent,
-    ExponentPipe
+    
+  
   ]
 })
 export class SharedModule { }
