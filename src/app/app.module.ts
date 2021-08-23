@@ -12,6 +12,7 @@ import { HomeModule } from './pages/home/home.module';
 import { Test1Component } from './test1/test1.component';
 import { Test2Component } from './test2/test2.component';
 import { Test3Component } from './test3/test3.component';
+import { VacunasComponent } from './vacunas/vacunas.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { Test3Component } from './test3/test3.component';
     Test1Component,
     Test3Component,
     Directive1Directive,
-    Directive2Directive
+    Directive2Directive,
+    VacunasComponent
   ],
   imports: [
     BrowserModule,

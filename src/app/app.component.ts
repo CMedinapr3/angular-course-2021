@@ -9,88 +9,29 @@ import { filter, map, delay } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular2021';
-  myStatus = 'my status';
-  sw = true;
+  allVacunados = [
+    {name: "juan", age: 16, date: "2019-09-07T15:50+00Z", disease: true, vaccineType: "A", vaccined:0, doses: 0},
+    {name: "maria", age: 23, date: "2019-09-07T15:50+00Z", disease: false, vaccineType: "B", vaccined:1, doses: 2},
+    {name: "carla", age: 45, date: "2019-09-07T15:50+00Z", disease: true, vaccineType: "C", vaccined:0, doses: 0},
+    {name: "marco", age: 50, date: "2019-09-07T15:50+00Z", disease: false, vaccineType: "A", vaccined:1, doses: 1},
+    {name: "marta", age: 12, date: "2019-09-07T15:50+00Z", disease: false, vaccineType: "A", vaccined:0, doses: 0},
+    {name: "jorge", age: 36, date: "2019-09-07T15:50+00Z", disease: false, vaccineType: "C", vaccined:1, doses: 3},
+    {name: "maritza", age: 18, date: "2019-09-07T15:50+00Z", disease: false, vaccineType: "C", vaccined:0, doses: 0},
+    {name: "leonardo", age: 35, date: "2019-09-07T15:50+00Z", disease: true, vaccineType: "B", vaccined:0, doses: 0},
+    {name: "ramiro", age: 24, date: "2019-09-07T15:50+00Z", disease: false, vaccineType: "B", vaccined:1, doses: 2},
+    {name: "juana", age: 13, date: "2019-09-07T15:50+00Z", disease: false, vaccineType: "A", vaccined:0, doses: 0}
+   ];
 
-  color:string;
-  personASub:Subscription;
-  video = 1;
-  tictock = new BehaviorSubject(this.video);
-
-  @ViewChild('myDiv1') myDiv1: ElementRef;
-  @ViewChild('myDiv2') myDiv2: ElementRef;
-  @ViewChild('myCompTest1') myCompTest1: any;
-  name="name";
-  lastname="apellido";
-  
-  switch: boolean = true;
-  lista:string[]=[this.name, this.lastname];
-
-//{1:'a',2:'a',3:'a',4:'a',5:'a',6:'a'} convertir a un array y sumar los numeros pares
-  constructor(){
-    const a = {1:'a',2:'a',3:'a',4:'a',5:'a',6:'a'};
-   const b = Object.keys(a).map(n => parseInt(n)).reduce((aux,value ) => {
-     if(value%2 ===0){
-       aux = aux + value;
-     }
-     return aux
-   },0);
-   console.log('resultado', b);
-  
    
-  //[1,2,3,4,5,6] filtrar los numeros impares y mostrarlos como cadena
-   const tareaFilter = [1,2,3,4,5,6].filter(item => item%2 !== 0).join(',');
-   console.log(tareaFilter);
+  personas = {
+    vacunados: this.allVacunados.filter(p => p.vaccined === 1),
+    novacunados: this.allVacunados.filter(p => p.vaccined === 0)
+  };
 
-  
-     // PERSON A
-     this.personASub = this.tictock.pipe(
-      filter(s => s%2 === 0)
-    ).subscribe(v => {
-      console.log('PERSON A VIDEO', v);
-    });
-    // PERSON B
-    this.tictock.pipe(
-      
-      delay(4000)
-    ).subscribe(v => {
-      console.log('PERSON B VIDEO', v);
-    });
-    // PERSON C
-    this.tictock.subscribe(v => {
-      console.log('PERSON C VIDEO', v);
-    });
-  
-  
+
+   vacunar(persona, tipo) {
+    const index = this.persona[tipo].findIndex(p => p === persona);
+    this.personas[tipo].splice(index, 1);
+    this.personas.vacunados.push({...persona, vacunado: true});
   }
-  printDataTest1Comp(event:any){
-    console.log('RICARDO COMP:', event);
-    }
-
-    printData(event){
-      console.log('Child Test 2:', event);
-    }
-  
-    onAddVideo(){
-      this.video ++
-      this.tictock.next(this.video);    
-    }
-  
-    person1Unsubscribe(){
-       this.personASub.unsubscribe();
-       console.log('PERSON A SE DESUSCRIBE')
-    }
-
-    test(event){
-      console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAA', event);
-    }
-
-    onShowLocalVars(){
-      console.log(this.myDiv1, this.myDiv2, this.myCompTest1);
-    
-      this.myCompTest1.onClickTest();
-    
-      this.myDiv2.nativeElement.value = 'test1';
-    }
 }

@@ -1,6 +1,41 @@
-<p>APP</p>
+<div>
 
-<app-admin1></app-admin1>
+ 
 
-<app-header></app-header>
-<app-sidebar></app-sidebar>
+  <p>VETERINARIA</p>
+  <p>VACUNADOS {{pets.vacunados.length}}</p>
+  <p>SIN VACUNAR {{pets.novacunados.length}}</p>
+
+	<p>VACUNADOS</p>
+	<div style="display: flex; flexDirection: row;">
+		<div *ngFor="let persona of personas.vacunados">
+			<app-vacunas
+       [name]="persona.name"
+       [age]="persona.age"
+       [date]="persona.date"
+       [disease]="persona.disease"
+       [vaccineType]="persona.vaccineType"
+       [vaccined]="persona.vaccined"
+       [doses]="persona.doses"
+       (votar)="vacunar(persona, 'vacunados')">
+			</app-vacunas>
+		</div>
+	</div>
+
+	<p>NO VACUNADOS</p>
+	<div style="display: flex; flexDirection: row;">
+		<div *ngFor="let persona of personas.novacunados">
+			<app-vacunas
+      [name]="persona.name"
+      [age]="persona.age"
+       [date]="persona.date"
+       [disease]="persona.disease"
+       [vaccineType]="persona.vaccineType"
+       [vaccined]="persona.vaccined"
+       [doses]="persona.doses"
+       (vacunar)="vacunar(persona, 'novacunados')">
+			</app-vacunas>
+		</div>
+	</div>
+
+</div>
