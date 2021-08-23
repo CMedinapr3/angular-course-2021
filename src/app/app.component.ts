@@ -28,9 +28,13 @@ export class AppComponent {
     novacunados: this.allVacunados.filter(p => p.vaccined === 0)
   };
 
+  verifyAllVacunados() {
+    const novacunados = this.personas.novacunados.filter(p => p.doses === 0);
+    return novacunados.length === 0;
+  }
 
-   vacunar(persona, tipo) {
-    const index = this.persona[tipo].findIndex(p => p === persona);
+  vacunar(persona, tipo) {
+    const index = this.personas[tipo].findIndex(p => p === persona);
     this.personas[tipo].splice(index, 1);
     this.personas.vacunados.push({...persona, vacunado: true});
   }
