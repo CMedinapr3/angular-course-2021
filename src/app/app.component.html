@@ -1,6 +1,6 @@
 <p>APP</p>
 
-<app-admin1></app-admin1>
+<p>PURE: {{ data| pure}}</p>
+<p>IMPURE: {{data | impure}}</p>
 
-<app-header></app-header>
-<app-sidebar></app-sidebar>
+<button (click)="data.push(10)">add</button>

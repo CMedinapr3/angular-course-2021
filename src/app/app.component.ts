@@ -9,6 +9,9 @@ import { filter, map, delay } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  data = [1,2,3,4,5,6,7,8,9 ]
+
   title = 'angular2021';
   myStatus = 'my status';
   sw = true;
