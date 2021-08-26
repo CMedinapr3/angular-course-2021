@@ -14,9 +14,13 @@ export class View2Component implements OnInit {
     
     /*this.router.params.subscribe(p => {
       console.log('PARAMS', p);
-    });*/
-
-    console.log('SNAPSHOT', this.router.snapshot.params)
+      });
+    this.router.queryParams.subscribe(q => {
+      console.log('QUERY PARAMS:', q);
+    })
+*/
+console.log('SNAPSHOT', this.router.snapshot.params)
+console.log('SNAPSHOT QP', this.router.snapshot.queryParams)
   }
 
 }
