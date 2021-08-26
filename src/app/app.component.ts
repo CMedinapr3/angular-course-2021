@@ -1,7 +1,7 @@
 import { Component, Input, ElementRef, ViewChild } from '@angular/core';
 import {BehaviorSubject, of, Subscription} from 'rxjs';
 import { filter, map, delay } from 'rxjs/operators';
-
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -10,6 +10,7 @@ import { filter, map, delay } from 'rxjs/operators';
 })
 export class AppComponent {
 
+  id:number = 3;
   data = [1,2,3,4,5,6,7,8,9 ]
 
   title = 'angular2021';
@@ -31,7 +32,7 @@ export class AppComponent {
   lista:string[]=[this.name, this.lastname];
 
 //{1:'a',2:'a',3:'a',4:'a',5:'a',6:'a'} convertir a un array y sumar los numeros pares
-  constructor(){
+  constructor(private router: Router){
     const a = {1:'a',2:'a',3:'a',4:'a',5:'a',6:'a'};
    const b = Object.keys(a).map(n => parseInt(n)).reduce((aux,value ) => {
      if(value%2 ===0){
@@ -95,5 +96,9 @@ export class AppComponent {
       this.myCompTest1.onClickTest();
     
       this.myDiv2.nativeElement.value = 'test1';
+    }
+
+    onGoView2FromTS():void{
+      this.router.navigate(['view2', this.id, 'sub', 33333])
     }
 }
