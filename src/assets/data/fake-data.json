@@ -1,0 +1,25 @@
+{
+"publication":{
+  "p001":{
+      "idUser": 1,
+      "description": "textoteatawat",
+      "date":"17/07/2021",
+      "imageUrl": "http/firebase/img.jpg",
+      "userPhotoUrl": "http/firebase/user1.jpg"
+    },
+    "p002":{
+      "idUser": 2,
+      "description": "textoteatawat",
+      "date":"17/07/2021",
+      "imageUrl": "http/firebase/img.jpg",
+      "userPhotoUrl": "http/firebase/user1.jpg"
+    },
+    "p003":{
+      "idUser": 3,
+      "description": "textoteatawat",
+      "date":"17/07/2021",
+      "imageUrl": "http/firebase/img.jpg",
+      "userPhotoUrl": "http/firebase/user1.jpg"
+    }
+  }
+}
