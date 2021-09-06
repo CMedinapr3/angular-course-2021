@@ -1,25 +1,25 @@
 {
-"publication":{
-  "p001":{
-      "idUser": 1,
-      "description": "textoteatawat",
-      "date":"17/07/2021",
-      "imageUrl": "http/firebase/img.jpg",
-      "userPhotoUrl": "http/firebase/user1.jpg"
-    },
-    "p002":{
+  "publications": {
+    "p0001": {
       "idUser": 2,
-      "description": "textoteatawat",
-      "date":"17/07/2021",
-      "imageUrl": "http/firebase/img.jpg",
-      "userPhotoUrl": "http/firebase/user1.jpg"
+      "description": "adasdasdasdasdasdasd",
+      "date": "17/82/2021",
+      "imageUrl": "http://fitebase/img.jpg",
+      "userPhotoUrl": "http://fitebase/user1.jpg"
     },
-    "p003":{
+    "p0002": {
       "idUser": 3,
-      "description": "textoteatawat",
-      "date":"17/07/2021",
-      "imageUrl": "http/firebase/img.jpg",
-      "userPhotoUrl": "http/firebase/user1.jpg"
+      "description": "adasdasdasdasdasdasd",
+      "date": "17/82/2021",
+      "imageUrl": "http://fitebase/img.jpg",
+      "userPhotoUrl": "http://fitebase/user1.jpg"
+    },
+    "p0003": {
+      "idUser": 2,
+      "description": "adasdasdasdasdasdasd",
+      "date": "17/82/2021",
+      "imageUrl": "http://fitebase/img.jpg",
+      "userPhotoUrl": "http://fitebase/user1.jpg"
     }
   }
 }
