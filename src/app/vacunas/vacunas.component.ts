@@ -7,7 +7,6 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
        style="float: left; margin: 10px; padding: 20px;">
 
 	  <p>Nombre: {{name | uppercase}}</p>
-    <p>Color: {{color}}</p>
 	  <p>age: {{age}}</p>
     <p>date: {{(date | strToDate)|date: 'dd/MM/yyyy'}}</p>
     <p>vaccineType: {{vaccineType}}</p>
@@ -23,7 +22,8 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
   </div>
   `
 })
-export class VacunasComponent {
+export class VacunasComponent  {
+  @Input() id;
   @Input() name: string;
   @Input() age: string;
   @Input() date: string;

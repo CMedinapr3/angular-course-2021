@@ -1,41 +1,46 @@
 <div>
 
-<div *ngIf = "personas.vacunados.length === 5" style="background-color: green">EVERYBODY VACCINATED</div>
+<div *ngIf = "vaccinated.length === 5" style="background-color: green">EVERYBODY VACCINATED</div>
 
   <p>VACUNACION ! </p>
-  <p>VACUNADOS {{personas.vacunados.length}}</p>
-  <p>SIN VACUNAR {{personas.novacunados.length}}</p>
+  <p>VACUNADOS {{vaccinated.length}}</p>
+  <p>SIN VACUNAR {{unvaccinated.length}}</p>
 
 	<p>VACUNADOS</p>
 	<div style="display: flex; flexDirection: row;">
-		<div *ngFor="let persona of personas.vacunados">
+		<div *ngFor="let persona of vaccinated">
 			<app-vacunas
-       [name]="persona.name"
-       [age]="persona.age"
-       [date]="persona.date"
-       [disease]="persona.disease"
-       [vaccineType]="persona.vaccineType"
-       [vaccined]="persona.vaccined"
-       [doses]="persona.doses"
-       (vacunar)="vacunar(persona, 'vacunados')">
+       [id]="persona[0]"
+       [name]="persona[1]['name']"
+       [age]="persona[1].age"
+       [date]="persona[1].date"
+       [disease]="persona[1].disease"
+       [vaccineType]="persona[1].vaccineType"
+       [vaccined]="persona[1].vaccined"
+       [doses]="persona[1].doses"
+       (vacunar)="vacunar(persona, 'vaccinated')">
 			</app-vacunas>
 		</div>
 	</div>
 
 	<p>NO VACUNADOS</p>
 	<div style="display: flex; flexDirection: row;">
-		<div *ngFor="let persona of personas.novacunados">
+		<div *ngFor="let persona of unvaccinated">
 			<app-vacunas
-      [name]="persona.name"
-      [age]="persona.age"
-       [date]="persona.date"
-       [disease]="persona.disease"
-       [vaccineType]="persona.vaccineType"
-       [vaccined]="persona.vaccined"
-       [doses]="persona.doses"
-       (vacunar)="vacunar(persona, 'novacunados')">
+      [id]="persona[0]"
+      [name]="persona[1]['name']"
+      [age]="persona[1].age"
+      [date]="persona[1].date"
+      [disease]="persona[1].disease"
+      [vaccineType]="persona[1].vaccineType"
+      [vaccined]="persona[1].vaccined"
+      [doses]="persona[1].doses"
+       (vacunar)="vacunar(persona[0], persona[1]['name'], persona[1]['age'], persona[1]['date'],
+       persona[1]['disease'], persona[1]['vaccineType'], persona[1]['vaccined'], persona[1]['doses'])">
 			</app-vacunas>
 		</div>
 	</div>
 
 </div>
+
+

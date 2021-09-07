@@ -1,7 +1,9 @@
 import { NgIf } from '@angular/common';
-import { Component, Input, ElementRef, ViewChild } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, OnInit } from '@angular/core';
 import {BehaviorSubject, of, Subscription} from 'rxjs';
 import { filter, map, delay } from 'rxjs/operators';
+import { VacunasService } from './vacunas.service';
+import { VacunasComponent } from './vacunas/vacunas.component';
 
 
 @Component({
@@ -10,39 +12,70 @@ import { filter, map, delay } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  allVacunados = [
-    {name: "juan", age: 16, date: "2019-09-07T15:50+00Z", disease: true, vaccineType: "A", vaccined:0, doses: 0},
-    {name: "maria", age: 23, date: "2019-09-07T15:50+00Z", disease: false, vaccineType: "B", vaccined:1, doses: 2},
-    {name: "carla", age: 45, date: "2019-09-07T15:50+00Z", disease: true, vaccineType: "C", vaccined:0, doses: 0},
-    {name: "marco", age: 50, date: "2019-09-07T15:50+00Z", disease: false, vaccineType: "A", vaccined:1, doses: 1},
-    {name: "marta", age: 12, date: "2019-09-07T15:50+00Z", disease: false, vaccineType: "A", vaccined:0, doses: 0},
-    {name: "jorge", age: 36, date: "2019-09-07T15:50+00Z", disease: false, vaccineType: "C", vaccined:1, doses: 3},
-    {name: "maritza", age: 18, date: "2019-09-07T15:50+00Z", disease: false, vaccineType: "C", vaccined:0, doses: 0},
-    {name: "leonardo", age: 35, date: "2019-09-07T15:50+00Z", disease: true, vaccineType: "B", vaccined:0, doses: 0},
-    {name: "ramiro", age: 24, date: "2019-09-07T15:50+00Z", disease: false, vaccineType: "B", vaccined:1, doses: 2},
-    {name: "juana", age: 13, date: "2019-09-07T15:50+00Z", disease: false, vaccineType: "A", vaccined:0, doses: 0}
-   ];
-   
-  personas = {
-    vacunados: this.allVacunados.filter(p => p.vaccined === 1),
-    novacunados: this.allVacunados.filter(p => p.vaccined === 0)
-  };
 
-  verifyAllVacunados() {
-    const novacunados = this.personas.novacunados.filter(p => p.doses === 0);
-    return novacunados.length === 0;
+  unvaccinated=[]
+  vaccinated=[]
+
+  constructor(private vacuna: VacunasService) {
+    
+    this.vacuna.getAllUnvaccinated().subscribe(data => this.getDataUnvaccinated(data))
+    this.vacuna.getAllVaccinated().subscribe(data => this.getVaccinated(data))
+
   }
 
-  vacunar(persona, tipo) {
-    const index = this.personas[tipo].findIndex(p => p === persona);
-    if(persona.doses < 3 && persona.vaccineType === "C"){
-      persona.doses++
-        if(persona.doses ===3){
-          this.personas[tipo].splice(index, 1);
-          this.personas.vacunados.push({...persona, vaccined: 1});
+
+  getDataUnvaccinated(data){
+
+    this.unvaccinated=Object.entries(data);
+  }
+
+  getVaccinated(data){
+
+    this.vaccinated=Object.entries(data);
+    console.log(data)
+  }
+
+  verifyAllVacunados() {
+    return this.unvaccinated.length;
+  }
+
+  vacunar(id: string, nombre: string, edad: string, fecha: string, enfermedad: boolean, tipo: string,  vacunado: number, dosis: number) {
+    
+    
+    
+
+      if(dosis === 0 && tipo === "C"){
+        this.vacuna.patch(id, {"doses": 1 }).subscribe(res=>console.log(res))
         }
-    }
+
+      if(dosis === 1 && tipo === "C"){
+        this.vacuna.patch(id, {"doses": 2 }).subscribe(res=>console.log(res))
+          }     
+          
+      if(dosis === 2 && tipo === "C"){
+        
+        this.vacuna.patch(id, {"doses": 3 }).subscribe(res=>console.log(res))
+        this.vacuna.create({
+          "age":edad ,
+          "date":fecha,
+          "disease":enfermedad,
+          "doses":3,
+          "name":nombre,
+          "vaccineType":tipo,
+          "vaccined":1
+        }).subscribe(
+          res => console.log(res))
+      
+        this.vacuna.deleteUnvaccinated(i).subscribe(
+          res => console.log(res))
+  
+           }
+     this.vacuna.getAllUnvaccinated().subscribe(data => this.getDataUnvaccinated(data))
+     this.vacuna.getAllVaccinated().subscribe(data => this.getVaccinated(data))
+
+     window.location.reload();
+
      
-    }
+  }
     
 }
