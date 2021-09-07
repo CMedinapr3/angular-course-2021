@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class VacunasService {
 
-  url="https://prueba-776a9-default-rtdb.firebaseio.com/"
+  url="https://vaccines-test-default-rtdb.firebaseio.com/"
   constructor(private http: HttpClient) { }
 
   public getAllVaccinated():Observable<any>{

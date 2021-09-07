@@ -66,7 +66,7 @@ export class AppComponent {
         }).subscribe(
           res => console.log(res))
       
-        this.vacuna.deleteUnvaccinated(i).subscribe(
+        this.vacuna.deleteUnvaccinated(id).subscribe(
           res => console.log(res))
   
            }
