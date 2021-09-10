@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SingletonService} from "../../login/services/singleton.service";
+import {PublicationService} from "../shared/services/publication.service";
 
 @Component({
   templateUrl: './home.component.html',
@@ -7,13 +7,19 @@ import {SingletonService} from "../../login/services/singleton.service";
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private singletonService: SingletonService) { }
+  constructor(private publicationService: PublicationService) { }
 
   ngOnInit(): void {
+
+    this.publicationService.getAll().subscribe(res => {
+
+      console.log('RES PUBLICATIONS', res);
+
+    })
+
   }
 
   onShowMessage():void{
-    console.log(this.singletonService.getMessage());
   }
 
 }
