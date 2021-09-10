@@ -1,30 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from "./services/auth.service";
+import {MatDialog} from "@angular/material/dialog";
+import {RegisterComponent} from "./components/register/register.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
-  formReactive: FormGroup;
-
-  constructor(private formBuilder:FormBuilder) {
-
-    this.formReactive = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
-      lastName: ['', [Validators.required]]
-    });
-
+  constructor(private authService: AuthService,
+              private matDialog: MatDialog,
+              private router: Router) {
   }
 
   ngOnInit(): void {
-
-
   }
 
-  getValue(value:string){
-    return this.formReactive.get(value);
+  login(form:any){
+    this.authService.login({
+      email: form.value.email,
+      password: form.value.password,
+      returnSecureToken: true
+    }).subscribe(res => {
+      console.log('RESPONSE', res);
+      this.router.navigate(['pages']);
+    });
   }
+
+  onCreateNewAccount(){
+    this.matDialog.open(RegisterComponent)
+  }
+
 }
