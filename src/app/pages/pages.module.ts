@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { PagesComponent } from './pages.component';
 import {RouterModule, Routes} from "@angular/router";
 
-
-
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', loadChildren: () =>
@@ -24,6 +22,3 @@ const routes: Routes = [
   ]
 })
 export class PagesModule { }
-
-
-
