@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class MetodosService {
-  
+
   url="https://prueba-776a9-default-rtdb.firebaseio.com/"
   constructor(private http: HttpClient) { }
 
@@ -28,5 +28,21 @@ export class MetodosService {
 
   public mineETH(id:string,val):Observable<any>{
     return this.http.patch(`${this.url}wallets/${id}.json`,{"eth":val})
+  }
+
+  
+  public createTrans(body: any): Observable<any> {
+    return this.http.post(`${this.url}/transactions.json`, body);
+  }
+
+  public updateTrans(id: string, body: any): Observable<any> {
+    return this.http.put(`${this.url}/transactions/${id}.json`, body);
+  }
+  public createWall(body: any): Observable<any> {
+    return this.http.post(`${this.url}/wallets.json`, body);
+  }
+
+  public updateWall(id: string, body: any): Observable<any> {
+    return this.http.put(`${this.url}/wallets/${id}.json`, body);
   }
 }

@@ -55,8 +55,12 @@ export class AppComponent  {
     
   }
 
-  edit(transaction){
+  editTrans(tran){
+    console.log(tran)
+  }
 
+  createTrans(){
+    console.log("created")
   }
 
   updateTotalMoney(){
