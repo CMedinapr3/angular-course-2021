@@ -17,6 +17,7 @@ import { FormComponent } from './form/form.component';
   
   ],
   declarations: [ AppComponent, WalletComponent, TransComponent, FormComponent ],
+  entryComponents: [FormComponent],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

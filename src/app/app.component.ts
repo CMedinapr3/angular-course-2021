@@ -1,7 +1,6 @@
 import { Component, VERSION } from '@angular/core';
 import { FormComponent } from './form/form.component';
 import { MetodosService } from './metodos.service';
-import {MatDialog} from "@angular/material/dialog";
 
 
 @Component({
