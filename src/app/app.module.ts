@@ -6,10 +6,17 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { WalletComponent } from './wallet/wallet.component';
 import { TransComponent } from './trans/trans.component';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule,HttpClientModule, ReactiveFormsModule ],
-  declarations: [ AppComponent, WalletComponent, TransComponent ],
+  imports:[ BrowserModule, 
+    FormsModule,
+    HttpClientModule, 
+    ReactiveFormsModule,
+    
+  
+  ],
+  declarations: [ AppComponent, WalletComponent, TransComponent, FormComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

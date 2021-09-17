@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 })
 export class MetodosService {
 
-  url="https://prueba-776a9-default-rtdb.firebaseio.com/"
+  url="https://bitcoin-test-a0874-default-rtdb.firebaseio.com/"
   constructor(private http: HttpClient) { }
 
   public getAllWallets():Observable<any>{

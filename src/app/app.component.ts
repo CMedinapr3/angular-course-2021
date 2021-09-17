@@ -1,5 +1,7 @@
 import { Component, VERSION } from '@angular/core';
+import { FormComponent } from './form/form.component';
 import { MetodosService } from './metodos.service';
+import {MatDialog} from "@angular/material/dialog";
 
 
 @Component({
@@ -56,11 +58,11 @@ export class AppComponent  {
   }
 
   editTrans(tran){
-    console.log(tran)
+    console.log("edited")
   }
 
   createTrans(){
-    console.log("created")
+    this.matDialog.open(FormComponent);
   }
 
   updateTotalMoney(){
@@ -73,6 +75,7 @@ export class AppComponent  {
       console.log(this.btc)
     }
   }
+
   transLeft():boolean{
     return this.transactions.find(item => item[1]['mineType'] !== 'PoS' ||
     item[1]['miner'] > 20) === undefined
